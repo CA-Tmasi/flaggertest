@@ -7,7 +7,7 @@ image:
 podAnnotations: {}
 
 service:
-  enabled: false
+  enabled: true
   type: ClusterIP
   port: 9898
 
@@ -19,11 +19,11 @@ hpa:
   memory: 512Mi
 
 canary:
-  enabled: false
+  enabled: true
   # Istio traffic policy tls can be DISABLE or ISTIO_MUTUAL
   istioTLS: DISABLE
   istioIngress:
-    enabled: false
+    enabled: true
     # Istio ingress gateway name
     gateway: istio-system/public-gateway
     # external host name eg. podinfo.example.com
