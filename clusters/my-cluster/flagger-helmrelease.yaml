@@ -5,7 +5,8 @@ metadata:
   name: flagger
   namespace: flagger-system
 spec:
-  interval: 1h
+  # interval: 1h
+  interval: 1m
   releaseName: flagger
   install: # override existing Flagger CRDs
     crds: CreateReplace
@@ -14,8 +15,9 @@ spec:
   chart:
     spec:
       chart: flagger
-      version: 1.x # update Flagger to the latest minor version
-      interval: 6h # scan for new versions every six hours
+      # version: 1.x # update Flagger to the latest minor version
+      version: 1.33.0 # update Flagger to the latest minor version
+      interval: 1m # scan for new versions every six hours
       sourceRef:
         kind: HelmRepository
         name: flagger
