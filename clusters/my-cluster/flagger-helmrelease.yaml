@@ -11,8 +11,10 @@ spec:
   targetNamespace: istio-system
   install: # override existing Flagger CRDs
     crds: CreateReplace
+    disableWait: true
   upgrade: # update Flagger CRDs
     crds: CreateReplace
+    disableWait: true
   chart:
     spec:
       chart: flagger
