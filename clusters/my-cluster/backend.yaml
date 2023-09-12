@@ -23,13 +23,13 @@ spec:
       repository: stefanprodan/podinfo
       tag: 3.1.0
       backend: http://backend-podinfo:9898/echo
-      canary:
+    canary:
+      enabled: true
+      istioIngress:
+        enabled: false
+        host: example.local
+        gateway: public-gateway.istio-system.svc.cluster.local
+      loadtest:
         enabled: true
-        istioIngress:
-          enabled: false
-          host: example.local
-          gateway: public-gateway.istio-system.svc.cluster.local
-        loadtest:
-          enabled: true
-        helmtest:
-          enabled: true
+      helmtest:
+        enabled: true
