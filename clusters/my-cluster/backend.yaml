@@ -27,6 +27,7 @@ spec:
         enabled: true
         istioIngress:
           enabled: false
+          host: example.local
         loadtest:
           enabled: true
         helmtest:
