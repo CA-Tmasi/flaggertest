@@ -28,6 +28,7 @@ spec:
         istioIngress:
           enabled: false
           host: example.local
+          gateway: public-gateway.istio-system.svc.cluster.local
         loadtest:
           enabled: true
         helmtest:

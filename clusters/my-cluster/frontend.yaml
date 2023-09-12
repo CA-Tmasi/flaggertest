@@ -27,7 +27,7 @@ spec:
         enabled: true
         istioIngress:
           enabled: true
-          gateway: istio-system/public-gateway
+          gateway: public-gateway.istio-system.svc.cluster.local
           host: frontend.istio.example.com
         loadtest:
           enabled: true
