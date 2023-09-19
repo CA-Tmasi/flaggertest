@@ -1,0 +1,33 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flagger
+  namespace: flux-system
+spec:
+  # interval: 1h
+  interval: 1m
+  releaseName: flagger
+  targetNamespace: istio-system
+  install: # override existing Flagger CRDs
+    crds: CreateReplace
+    disableWait: true
+  upgrade: # update Flagger CRDs
+    crds: CreateReplace
+    disableWait: true
+  chart:
+    spec:
+      chart: flagger
+      # version: 1.x # update Flagger to the latest minor version
+      version: 1.33.0 # update Flagger to the latest minor version
+      interval: 1m # scan for new versions every six hours
+      sourceRef:
+        kind: HelmRepository
+        name: flagger
+      # verify: # verify the chart signature with Cosign keyless
+      #   provider: cosign
+  values:
+    nodeSelector:
+      kubernetes.io/os: linux
+    meshProvider: istio
+    metricsServer: http://prometheus:9090

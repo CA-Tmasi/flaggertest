@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: backend
+  namespace: flux-system
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: semver:~3.1
+spec:
+  targetNamespace: default
+  releaseName: backend
+  chart:
+    spec:
+      chart: ./charts/podinfo
+      version: '6.1.3'
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  interval: 1m
+  values:
+    image:
+      repository: stefanprodan/podinfo
+      tag: 3.1.0
+      backend: http://backend-podinfo:9898/echo
+    canary:
+      enabled: true
+      istioIngress:
+        enabled: false
+        host: example.local
+        gateway: public-gateway.istio-system.svc.cluster.local
+      loadtest:
+        enabled: true
+      helmtest:
+        enabled: true

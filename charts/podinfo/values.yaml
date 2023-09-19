@@ -27,7 +27,7 @@ canary:
     # Istio ingress gateway name
     gateway: istio-system/public-gateway
     # external host name eg. podinfo.example.com
-    host:
+    host: ""
   analysis:
     # schedule interval (default 60s)
     interval: 15s

@@ -7,7 +7,7 @@ metadata:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: semver:~3.1
 spec:
-  targetnamespace: test
+  targetNamespace: default
   releaseName: frontend
   chart:
     spec:
@@ -23,13 +23,13 @@ spec:
       repository: stefanprodan/podinfo
       tag: 3.1.0
       backend: http://backend-podinfo:9898/echo
-      canary:
+    canary:
+      enabled: true
+      istioIngress:
         enabled: true
-        istioIngress:
-          enabled: true
-          gateway: istio-system/public-gateway
-          host: frontend.istio.example.com
-        loadtest:
-          enabled: true
-        helmtest:
-          enabled: true
+        gateway: public-gateway.istio-system.svc.cluster.local
+        host: frontend.istio.example.com
+      loadtest:
+        enabled: true
+      helmtest:
+        enabled: true
