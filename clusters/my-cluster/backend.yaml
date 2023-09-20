@@ -27,9 +27,10 @@ spec:
       enabled: true
       istioIngress:
         enabled: false
-        host: example.local
+        host: localhost
         gateway: public-gateway.istio-system.svc.cluster.local
       loadtest:
         enabled: true
+        url: http://flagger-loadtester.default/
       helmtest:
-        enabled: true
+        enabled: false
