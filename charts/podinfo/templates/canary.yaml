@@ -35,10 +35,12 @@ spec:
     stepWeight: {{ .Values.canary.analysis.stepWeight }}
     metrics:
     - name: request-success-rate
-      threshold: {{ .Values.canary.thresholds.successRate }}
+      thresholdRange:
+        min: {{ .Values.canary.thresholds.successRate }}
       interval: 1m
     - name: request-duration
-      threshold: {{ .Values.canary.thresholds.latency }}
+      thresholdRange:
+        max: {{ .Values.canary.thresholds.latency }}
       interval: 1m
     webhooks:
       {{- if .Values.canary.helmtest.enabled }}

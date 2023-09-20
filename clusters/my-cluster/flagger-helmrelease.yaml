@@ -30,4 +30,4 @@ spec:
     nodeSelector:
       kubernetes.io/os: linux
     meshProvider: istio
-    metricsServer: http://prometheus:9090
+    metricsServer: http://prometheus.istio-system:9090
